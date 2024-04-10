@@ -1,8 +1,8 @@
 {
-  "name": "car-rent-service",
+  "name": "psychologists-services",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://igrok1803444.github.io/car-rent-service/",
+  "homepage": "https://igrok1803444.github.io/psychologists-services/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
