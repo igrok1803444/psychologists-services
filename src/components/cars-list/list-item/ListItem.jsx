@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../../../redux/modal/modalSlice";
-import { checkFavorite, prepareAddress } from "../../../../features/index";
-import { InformationList } from "../../information-list/InformationList";
-import { selectFavoriteList } from "../../../../redux/favorite/selectors";
+import { checkFavorite, prepareAddress } from "features";
 import {
   addToFavorite,
   removeFromFavorite,
-} from "../../../../redux/favorite/favoriteSlice";
+} from "redux/favorite/favoriteSlice";
+import { openModal } from "redux/modal/modalSlice";
 import {
   CarData,
   CarHeaderWrapper,
@@ -15,9 +13,11 @@ import {
   IconButton,
   LI,
 } from "./ListItem.styled";
-import { Button } from "../../button/Button";
-import { ActionText } from "../../../styles/ActionText";
-import { Img } from "../../../styles/Img";
+import { Img } from "styles/Img";
+import { ActionText } from "styles/ActionText";
+import { InformationList } from "components/information-list/InformationList";
+import { Button } from "components/button/Button";
+import { selectFavoriteList } from "redux/favorite/selectors";
 
 export const ListItem = ({ car }) => {
   const dispatch = useDispatch();

@@ -15,6 +15,7 @@ import {
   persistReducer,
   persistStore,
 } from "redux-persist";
+import { authReducer } from "./auth/authSlice";
 
 const favoritePersistConfig = {
   key: "favorite",
@@ -23,6 +24,7 @@ const favoritePersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   cars: carsReducer,
   modal: modalReduser,
   filter: filterReducer,

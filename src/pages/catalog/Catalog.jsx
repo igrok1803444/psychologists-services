@@ -1,24 +1,20 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../../../redux/cars/operations";
-import {
-  selectIsLoading,
-  selectVisibleCars,
-} from "../../../redux/cars/selectors";
-import { CarsList } from "../../components/cars-list/CarsList";
-import ReactModal from "react-modal";
-import { selectModalIsOpen } from "../../../redux/modal/selectors";
-import { closeModal } from "../../../redux/modal/modalSlice";
-import { FilterZone } from "../../components/filter-zone/FilterZone";
-
-import { LoadMore } from "../../components/load-more/LoadMore";
-import { Preview } from "./Catalog.styled";
-import { ModalInfo } from "../../components/modal/modal-info/ModalInfo";
-import { ModalStyles } from "../../components/modal/Modal.styled";
-import { NoResultText } from "../../components/no-result- text/NoResultText";
+import { useEffect } from "react";
 import { RingLoader } from "react-spinners";
-import { theme } from "../../styles/theme";
-import { Header } from "../../components/header/Header";
+import { FilterZone } from "components/filter-zone/FilterZone";
+import { ModalStyles } from "components/modal/Modal.styled";
+import { ModalInfo } from "components/modal/modal-info/ModalInfo";
+import ReactModal from "react-modal";
+import { themeGreen } from "styles/theme";
+import { selectIsLoading, selectVisibleCars } from "redux/cars/selectors";
+import { selectModalIsOpen } from "redux/modal/selectors";
+import { closeModal } from "redux/modal/modalSlice";
+
+import { getCars } from "redux/cars/operations";
+import { CarsList } from "components/cars-list/CarsList";
+import { Preview } from "./Catalog.styled";
+import { NoResultText } from "components/no-result- text/NoResultText";
+import { LoadMore } from "components/load-more/LoadMore";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -36,7 +32,6 @@ const Catalog = () => {
   }, [dispatch]);
   return (
     <>
-      <Header />
       <main>
         <div className="container">
           <FilterZone></FilterZone>
@@ -46,7 +41,7 @@ const Catalog = () => {
             {!isLoading && cars.length === 0 && <NoResultText />}
             <RingLoader
               cssOverride={{ margin: "24px auto" }}
-              color={theme.colors.background.spiner}
+              color={themeGreen.colors.background.spiner}
               loading={isLoading}
             />
             {!isLoading && cars.length >= 12 && <LoadMore />}

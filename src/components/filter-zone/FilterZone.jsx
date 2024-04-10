@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilter } from "../../../redux/filter/selectors";
+import { selectFilter } from "../../redux/filter/selectors";
 import { useState } from "react";
 import {
   setMakeFilter,
   setMileageFilterMax,
   setMileageFilterMin,
   setPriceFilter,
-} from "../../../redux/filter/filterSlice";
-import { getCars } from "../../../redux/cars/operations";
+} from "../../redux/filter/filterSlice";
+import { getCars } from "../../redux/cars/operations";
 import { CarBrandSelect } from "./car-brand-select/CarBrandSelect";
 import { CarPriceSelect } from "./car-price-select/CarPriceSelect";
 import { InputLabel } from "../text/input-label/InputLabel";

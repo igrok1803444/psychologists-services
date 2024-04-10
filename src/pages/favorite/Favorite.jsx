@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteList } from "../../../redux/favorite/selectors";
-import { CarsList } from "../../components/cars-list/CarsList";
-import { selectIsLoading } from "../../../redux/cars/selectors";
-import { NoResultText } from "../../components/no-result- text/NoResultText";
-import { Header } from "../../components/header/Header";
-import ReactModal from "react-modal";
-import { ModalStyles } from "app/components/modal/Modal.styled";
-import { closeModal } from "redux/modal/modalSlice";
 import { useEffect } from "react";
-import { ModalInfo } from "app/components/modal/modal-info/ModalInfo";
+import { selectIsLoading } from "redux/cars/selectors";
+import { selectFavoriteList } from "redux/favorite/selectors";
 import { selectModalIsOpen } from "redux/modal/selectors";
+import { closeModal } from "redux/modal/modalSlice";
+import { Header } from "components/header/Header";
+import { NoResultText } from "components/no-result- text/NoResultText";
+import { CarsList } from "components/cars-list/CarsList";
+import ReactModal from "react-modal";
+import { ModalStyles } from "components/modal/Modal.styled";
+import { ModalInfo } from "components/modal/modal-info/ModalInfo";
 
 const Favorite = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-export const theme = {
+export const themeGreen = {
   colors: {
     background: {
       navLink: "#fff",
@@ -12,6 +12,7 @@ export const theme = {
       spiner: "#3470ff",
     },
     text: {
+      subColorText: "#FBFBFB",
       navLink: "#3470ff",
       navLinkActive: "#fff",
       button: "#fff",

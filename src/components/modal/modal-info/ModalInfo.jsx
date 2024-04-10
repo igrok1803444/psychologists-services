@@ -1,10 +1,8 @@
+import { prepareAddress } from "features";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModalData } from "../../../../redux/modal/selectors";
-import { prepareAddress } from "../../../../features";
-import { InformationList } from "../../information-list/InformationList";
-import { ConditionsList } from "../../conditions-list/ConditionsList";
-import { Img } from "../../../styles/Img";
-import { ActionText } from "../../../styles/ActionText";
+
+import { closeModal } from "redux/modal/modalSlice";
+import { selectModalData } from "redux/modal/selectors";
 import {
   ModalCarDescription,
   ModalCarInfoWrapper,
@@ -14,7 +12,10 @@ import {
   ModalLink,
   ModalSubTitle,
 } from "./ModalInfo.styled";
-import { closeModal } from "redux/modal/modalSlice";
+import { Img } from "styles/Img";
+import { InformationList } from "components/information-list/InformationList";
+import { ActionText } from "styles/ActionText";
+import { ConditionsList } from "components/conditions-list/ConditionsList";
 
 export const ModalInfo = () => {
   const dispatch = useDispatch();

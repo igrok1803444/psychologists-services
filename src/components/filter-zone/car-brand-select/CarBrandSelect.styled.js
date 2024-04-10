@@ -1,4 +1,4 @@
-import { theme } from "../../../styles/theme";
+import { themeGreen } from "styles/theme";
 
 export const CarBrandSelectStyles = {
   container: (baseStyles, state) => ({
@@ -10,7 +10,7 @@ export const CarBrandSelectStyles = {
     ...baseStyles,
 
     width: "224px",
-    backgroundColor: theme.colors.background.select,
+    backgroundColor: themeGreen.colors.background.select,
 
     boxShadow: "none",
     border: "none",
@@ -25,10 +25,10 @@ export const CarBrandSelectStyles = {
     ...baseStyles,
     padding: "14px",
     rotate: state.isFocused ? "180deg" : "0",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
 
     ":hover": {
-      color: theme.colors.text.select,
+      color: themeGreen.colors.text.select,
     },
   }),
   placeholder: (baseStyles, state) => ({
@@ -37,7 +37,7 @@ export const CarBrandSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   valueContainer: (baseStyles, state) => ({
     ...baseStyles,
@@ -52,7 +52,7 @@ export const CarBrandSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   singleValue: (baseStyles) => ({
     ...baseStyles,
@@ -60,7 +60,7 @@ export const CarBrandSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   menu: (baseStyles) => ({
     ...baseStyles,
@@ -79,8 +79,8 @@ export const CarBrandSelectStyles = {
   option: (baseStyles, { isSelected }) => ({
     ...baseStyles,
     color: isSelected
-      ? theme.colors.text.select
-      : theme.colors.text.inactiveSelect,
+      ? themeGreen.colors.text.select
+      : themeGreen.colors.text.inactiveSelect,
 
     fontWeight: "500",
     fontSize: "16px",
@@ -89,12 +89,12 @@ export const CarBrandSelectStyles = {
 
     backgroundColor: "#fff",
 
-    transitionDuration: theme.transition.duration,
-    transitionTimingFunction: theme.transition.timingFunction,
+    transitionDuration: themeGreen.transition.duration,
+    transitionTimingFunction: themeGreen.transition.timingFunction,
     transitionProperty: "color",
 
     ":hover": {
-      color: theme.colors.text.select,
+      color: themeGreen.colors.text.select,
       backgroundColor: "#fff",
       boxShadow: "none",
     },

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { loadMore } from "../../../redux/cars/operations";
-import { selectPage } from "../../../redux/cars/selectors";
-import { selectFilter } from "../../../redux/filter/selectors";
 import { LoadMoreButton } from "./loadMore.styled";
+import { selectFilter } from "redux/filter/selectors";
+import { selectPage } from "redux/cars/selectors";
+import { loadMore } from "redux/cars/operations";
 
 export const LoadMore = () => {
   const dispatch = useDispatch();

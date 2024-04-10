@@ -1,4 +1,4 @@
-import { getNumberFromString } from "../../../features/index";
+import { getNumberFromString } from "../../features/index";
 import { ActionText } from "../../styles/ActionText";
 import { ConditionsLI, ConditionsListStyled } from "./ConditionsList.styled";
 

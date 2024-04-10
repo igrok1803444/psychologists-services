@@ -1,4 +1,4 @@
-import { theme } from "../../../styles/theme";
+import { themeGreen } from "styles/theme";
 
 export const CarPriceSelectStyles = {
   container: (baseStyles, state) => ({
@@ -9,7 +9,7 @@ export const CarPriceSelectStyles = {
   control: (baseStyles, state) => ({
     ...baseStyles,
 
-    backgroundColor: theme.colors.background.select,
+    backgroundColor: themeGreen.colors.background.select,
 
     boxShadow: "none",
     border: "none",
@@ -26,10 +26,10 @@ export const CarPriceSelectStyles = {
     paddingLeft: state.isFocused ? "14px" : "0",
     paddingRight: state.isFocused ? "0" : "14px",
     rotate: state.isFocused ? "180deg" : "0",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
 
     ":hover": {
-      color: theme.colors.text.select,
+      color: themeGreen.colors.text.select,
     },
   }),
   placeholder: (baseStyles, state) => ({
@@ -38,7 +38,7 @@ export const CarPriceSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   valueContainer: (baseStyles, state) => ({
     ...baseStyles,
@@ -52,7 +52,7 @@ export const CarPriceSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   singleValue: (baseStyles) => ({
     ...baseStyles,
@@ -60,7 +60,7 @@ export const CarPriceSelectStyles = {
     fontWeight: "500",
     fontSize: "18px",
     lineHeight: "111%",
-    color: theme.colors.text.select,
+    color: themeGreen.colors.text.select,
   }),
   menu: (baseStyles) => ({
     ...baseStyles,
@@ -80,8 +80,8 @@ export const CarPriceSelectStyles = {
   option: (baseStyles, { isSelected }) => ({
     ...baseStyles,
     color: isSelected
-      ? theme.colors.text.select
-      : theme.colors.text.inactiveSelect,
+      ? themeGreen.colors.text.select
+      : themeGreen.colors.text.inactiveSelect,
 
     fontWeight: "500",
     fontSize: "16px",
@@ -90,12 +90,12 @@ export const CarPriceSelectStyles = {
 
     backgroundColor: "#fff",
 
-    transitionDuration: theme.transition.duration,
-    transitionTimingFunction: theme.transition.timingFunction,
+    transitionDuration: themeGreen.transition.duration,
+    transitionTimingFunction: themeGreen.transition.timingFunction,
     transitionProperty: "color",
 
     ":hover": {
-      color: theme.colors.text.select,
+      color: themeGreen.colors.text.select,
       backgroundColor: "#fff",
       boxShadow: "none",
     },
