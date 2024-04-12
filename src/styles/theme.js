@@ -1,7 +1,7 @@
 export const themeGreen = {
   colors: {
     background: {
-      navLink: "#fff",
+      navLink: "#54be96",
       navLinkActivePointer: "#54be96",
       button: "#fbfbfb",
       buttonAction: "#54be96",
@@ -12,12 +12,18 @@ export const themeGreen = {
       conditionsLI: "#f9f9f9",
       spiner: "#3470ff",
       userIcon: "#54be96",
+      specialistLabel: "#54be96",
+      specialistIconContainer: "#fbfbfb",
+      contactsContainer: "#FBC75E",
+      questionLabel: " #4535af",
     },
     text: {
+      mainTitle: "#191a15",
+      infoText: "#191a15",
       logoText: "#191a15",
       subColorText: "#FBFBFB",
       navLink: "#191a15",
-      navLinkActive: "#fff",
+      navLinkActive: "#fbfbfb",
       button: "#191a15",
       buttonAction: "#fbfbfb",
       subHeadings: "#191a15",
@@ -42,7 +48,14 @@ export const themeGreen = {
     icons: {
       favoriteInactive: "#fff",
       favoriteActive: "#3470ff",
+      specialistIcon: "#54be96",
+      contactsIcon: "#fbfbfb",
+      questionIcon: "#fbfbfb",
     },
+  },
+  gradients: {
+    heroGradient:
+      "radial-gradient(circle at 100% 100%,rgba(84, 190, 150, 0.1) 0%,rgba(84, 190, 150, 0) 70%)",
   },
   transition: {
     duration: "500ms",
