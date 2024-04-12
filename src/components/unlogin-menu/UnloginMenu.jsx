@@ -1,5 +1,4 @@
 import ReactModal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
 
 import { Button } from "../button/Button";
 import { AuthButtonText, UnLoginMenu } from "./UnloginMenu.styled";
@@ -10,8 +9,6 @@ import { ModalStyles } from "components/modal/Modal.styled";
 import { AuthForm } from "components/auth-form/AuthForm";
 
 export const UnloginMenu = () => {
-  const dispatch = useDispatch();
-
   const [openForm, setOpenForm] = useState("");
   const [openAuthModal, setOpenAuthModal] = useState(false);
 

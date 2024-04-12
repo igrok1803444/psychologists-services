@@ -1,6 +1,6 @@
 import { ModalCloseIcon } from "components/modal/modal-info/ModalInfo.styled";
 import * as yup from "yup";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+// import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Notify } from "notiflix";
 
 import {
