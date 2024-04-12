@@ -48,14 +48,15 @@ const Catalog = () => {
           </Preview>
         </div>
       </main>
-      <ReactModal
+
+      {/* <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={handleModalClose}
         appElement={document.body}
         style={ModalStyles}
       >
         <ModalInfo></ModalInfo>
-      </ReactModal>
+      </ReactModal> */}
     </>
   );
 };

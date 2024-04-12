@@ -4,17 +4,22 @@ export const ModalStyles = {
   overlay: {
     zIndex: 100,
     backgroundColor: themeGreen.colors.background.overlay,
+    overflowY: "scroll",
 
     transitionProperty: "opacity",
     transitionDuration: themeGreen.transition.duration,
     transitionTimingFunction: themeGreen.transition.timingFunction,
   },
   content: {
-    maxWidth: "541px",
+    maxWidth: "565px",
+    maxHeight: "max-content",
+
+    width: "max-content",
+
     margin: "0 auto",
 
     padding: "0",
 
-    borderRadius: "24px",
+    borderRadius: "30px",
   },
 };

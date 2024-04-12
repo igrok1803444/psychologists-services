@@ -10,11 +10,11 @@ export const ModalCloseIcon = styled(IoMdClose)`
   cursor: pointer;
 
   position: absolute;
-  top: 16px;
-  right: 8px;
+  top: 20px;
+  right: 20px;
 
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 `;
 
 export const ModalCarInfoWrapper = styled.div`

@@ -9,44 +9,53 @@ export const HeaderSection = styled.header`
 
   margin: 0 auto;
 
-  padding: 14px 0;
+  padding: 24px 0;
 
   width: 100%;
 
   background-color: ${({ theme }) => theme.colors.background.headerSection};
+
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+`;
+
+export const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 auto;
+
+  max-width: 1184px;
+`;
+
+export const HeaderLogo = styled.h1`
+  display: block;
+
+  padding: 10px 0;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: ${({ theme }) => theme.colors.text.logoText};
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  column-gap: 30px;
 
-  justify-content: center;
-
-  max-width: 600px;
-
-  margin: 0 auto;
+  column-gap: 40px;
 
   text-align: center;
 `;
 
 export const NavLink = styled(ReactRouteLink)`
   display: block;
+  position: relative;
 
-  padding: 12px 24px;
+  padding: 14px 0;
 
-  width: 100%;
-  max-width: 274px;
-
-  background-color: ${({ theme }) => theme.colors.background.navLink};
-
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.colors.border.navLink};
-  border-radius: 12px;
-
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 143%;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
 
   color: ${({ theme }) => theme.colors.text.navLink};
 
@@ -54,14 +63,21 @@ export const NavLink = styled(ReactRouteLink)`
   transition-duration: ${({ theme }) => theme.transition.duration};
   transition-timing-function: ${({ theme }) => theme.transition.timingFunction};
 
-  &.active {
-    background-color: ${({ theme }) => theme.colors.background.navLinkActive};
+  &.active::after {
+    content: "";
 
-    color: ${({ theme }) => theme.colors.text.navLinkActive};
-  }
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.background.navLinkActive};
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
 
-    color: ${({ theme }) => theme.colors.text.navLinkActive};
+    width: 8px;
+    height: 8px;
+
+    border-radius: 100%;
+
+    background-color: ${({ theme }) =>
+      theme.colors.background.navLinkActivePointer};
+
+    transform: translateX(-50%);
   }
 `;

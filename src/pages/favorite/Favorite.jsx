@@ -36,14 +36,14 @@ const Favorite = () => {
           <CarsList cars={favoriteList} />
         </div>
       </main>
-      <ReactModal
+      {/* <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={handleModalClose}
         appElement={document.body}
         style={ModalStyles}
       >
         <ModalInfo></ModalInfo>
-      </ReactModal>
+      </ReactModal> */}
     </>
   );
 };

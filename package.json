@@ -9,9 +9,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.7",
+    "firebase": "^10.10.0",
+    "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",
     "notiflix": "^3.2.7",
-   
     "rc-input-number": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +25,8 @@
     "react-spinners": "^0.13.8",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
