@@ -4,6 +4,7 @@ const authInitialState = {
   user: {
     name: "",
     email: "",
+    id: "",
   },
   isLoggedIn: false,
   isLoading: false,
@@ -15,10 +16,10 @@ const authSlice = createSlice({
   initialState: authInitialState,
   reducers: {
     setUser: (state, action) => {
-      console.log(action);
       state.isLoggedIn = true;
       state.user.name = action.payload.displayName;
       state.user.email = action.payload.email;
+      state.user.id = action.payload.uid;
       state.token = action.payload.accessToken;
     },
     resetUser: (state) => {

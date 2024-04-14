@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { themeGreen } from "./styles/theme";
+import { setTheme, theme } from "./styles/theme";
 import { Suspense, lazy, useEffect } from "react";
 import { Home } from "./pages/home/Home";
 import { Header } from "components/header/Header";
 import { useDispatch } from "react-redux";
 import { closeModal } from "redux/modal/modalSlice";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "firabase";
 import { setUser } from "redux/auth/authSlice";
 
@@ -17,24 +17,22 @@ const Favorite = lazy(() => import("./pages/favorite/Favorite"));
 function App() {
   const dispatch = useDispatch();
 
-  const user = getAuth();
-  console.log(user);
-
   useEffect(() => {
     dispatch(closeModal());
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
-        const { displayName, accessToken, email } = user;
-        dispatch(setUser({ displayName, accessToken, email }));
+        const { displayName, accessToken, email, uid } = user;
+        dispatch(setUser({ displayName, accessToken, email, uid }));
         return user;
       }
     });
   }, [dispatch]);
 
+  setTheme();
+
   return (
     <Suspense fallback={null}>
-      <ThemeProvider theme={themeGreen}>
+      <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />

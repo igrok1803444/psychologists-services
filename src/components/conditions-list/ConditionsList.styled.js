@@ -2,26 +2,26 @@ import styled from "styled-components";
 
 export const ConditionsListStyled = styled.ul`
   display: flex;
-  column-gap: 8px;
+  column-gap: 4px;
   row-gap: 8px;
   flex-wrap: wrap;
 
-  max-width: 400px;
-
-  margin-top: 8px;
+  margin-top: 24px;
 `;
 
 export const ConditionsLI = styled.li`
-  padding: 7px 14px;
+  padding: 8px 16px;
 
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 150%;
 
-  color: ${({ theme }) => theme.colors.text.conditionText};
+  border-radius: 24px;
+
+  color: ${({ theme }) => theme.colors.text.subInfoText};
   background-color: ${({ theme }) => theme.colors.background.conditionsLI};
 
   & span {
-    font-weight: 600;
+    color: ${({ theme }) => theme.colors.text.conditionText};
   }
 `;

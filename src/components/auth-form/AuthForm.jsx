@@ -65,8 +65,8 @@ export const AuthForm = ({ option, handleModalClose }) => {
         );
         console.log(user);
       }
-      const { displayName, accessToken, email } = user;
-      dispatch(setUser({ displayName, accessToken, email }));
+      const { displayName, accessToken, email, uid } = user;
+      dispatch(setUser({ displayName, accessToken, email, uid }));
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         Notify.failure("Bad password or email");

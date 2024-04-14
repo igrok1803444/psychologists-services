@@ -1,53 +1,59 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { RingLoader } from "react-spinners";
+import { useEffect, useState } from "react";
 import { FilterZone } from "components/filter-zone/FilterZone";
 import { ModalStyles } from "components/modal/Modal.styled";
 import { ModalInfo } from "components/modal/modal-info/ModalInfo";
 import ReactModal from "react-modal";
-import { themeGreen } from "styles/theme";
-import { selectIsLoading, selectVisibleCars } from "redux/cars/selectors";
+
 import { selectModalIsOpen } from "redux/modal/selectors";
 import { closeModal } from "redux/modal/modalSlice";
 
-import { getCars } from "redux/cars/operations";
-import { CarsList } from "components/cars-list/CarsList";
 import { Preview } from "./Catalog.styled";
-import { NoResultText } from "components/no-result- text/NoResultText";
+// import { NoResultText } from "components/no-result- text/NoResultText";
 import { LoadMore } from "components/load-more/LoadMore";
+import { selectSpecialists } from "redux/specialists/selectors";
+import { SpecialistsList } from "components/specialists-list/SpecialistsList";
+import { Main } from "styles/Main";
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  const cars = useSelector(selectVisibleCars);
-  const isLoading = useSelector(selectIsLoading);
+
+  const specialists = useSelector(selectSpecialists);
   const modalIsOpen = useSelector(selectModalIsOpen);
+
+  const [number, setNumber] = useState(3);
+
+  const [visibleSpecialists, setVisibleSpecialists] = useState([]);
 
   const handleModalClose = (event) => {
     event.preventDefault();
     dispatch(closeModal());
   };
+
   useEffect(() => {
-    dispatch(getCars());
+    setVisibleSpecialists(specialists.slice(0, number));
+  }, [specialists, number]);
+
+  useEffect(() => {
     dispatch(closeModal());
   }, [dispatch]);
   return (
     <>
-      <main>
+      <Main>
         <div className="container">
-          <FilterZone></FilterZone>
-
           <Preview>
-            {cars.length > 0 && <CarsList cars={cars} />}
-            {!isLoading && cars.length === 0 && <NoResultText />}
-            <RingLoader
-              cssOverride={{ margin: "24px auto" }}
-              color={themeGreen.colors.background.spiner}
-              loading={isLoading}
+            <FilterZone></FilterZone>
+
+            <SpecialistsList specialists={visibleSpecialists} />
+
+            <LoadMore
+              onClick={() => {
+                setNumber((prevNumber) => prevNumber + 3);
+              }}
             />
-            {!isLoading && cars.length >= 12 && <LoadMore />}
           </Preview>
         </div>
-      </main>
+      </Main>
 
       <ReactModal
         isOpen={modalIsOpen}

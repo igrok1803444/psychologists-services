@@ -1,41 +1,63 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectIsLoading } from "redux/cars/selectors";
-import { selectFavoriteList } from "redux/favorite/selectors";
+import { useEffect, useState } from "react";
+
+import { selectUsersFavorites } from "redux/favorite/selectors";
 import { selectModalIsOpen } from "redux/modal/selectors";
 import { closeModal } from "redux/modal/modalSlice";
-import { Header } from "components/header/Header";
+
 import { NoResultText } from "components/no-result- text/NoResultText";
-import { CarsList } from "components/cars-list/CarsList";
+
 import ReactModal from "react-modal";
 import { ModalStyles } from "components/modal/Modal.styled";
 import { ModalInfo } from "components/modal/modal-info/ModalInfo";
+import { Preview } from "pages/catalog/Catalog.styled";
+import { FilterZone } from "components/filter-zone/FilterZone";
+import { SpecialistsList } from "components/specialists-list/SpecialistsList";
+import { LoadMore } from "components/load-more/LoadMore";
+import { Main } from "styles/Main";
 
 const Favorite = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(selectIsLoading);
-  const favoriteList = useSelector(selectFavoriteList);
+  const [number, setNumber] = useState(3);
+
+  const [visibleSpecialists, setVisibleSpecialists] = useState([]);
+
+  const isLoading = false;
+  const favoriteList = useSelector(selectUsersFavorites);
   const modalIsOpen = useSelector(selectModalIsOpen);
 
   const handleModalClose = (event) => {
     event.preventDefault();
     dispatch(closeModal());
   };
+
+  useEffect(() => {
+    setVisibleSpecialists(favoriteList.slice(0, number));
+  }, [favoriteList, number]);
+
   useEffect(() => {
     dispatch(closeModal());
   }, [dispatch]);
   return (
     <>
-      <Header />
-
-      <main>
+      <Main>
         <div className="container">
           {!isLoading && favoriteList.length === 0 && <NoResultText />}
 
-          <CarsList cars={favoriteList} />
+          <Preview>
+            <FilterZone></FilterZone>
+
+            <SpecialistsList specialists={visibleSpecialists} />
+
+            <LoadMore
+              onClick={() => {
+                setNumber((prevNumber) => prevNumber + 3);
+              }}
+            />
+          </Preview>
         </div>
-      </main>
+      </Main>
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={handleModalClose}

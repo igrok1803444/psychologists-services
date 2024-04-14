@@ -1,74 +1,78 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectFilter } from "../../redux/filter/selectors";
-import { useState } from "react";
-import {
-  setMakeFilter,
-  setMileageFilterMax,
-  setMileageFilterMin,
-  setPriceFilter,
-} from "../../redux/filter/filterSlice";
-import { getCars } from "../../redux/cars/operations";
-import { CarBrandSelect } from "./car-brand-select/CarBrandSelect";
-import { CarPriceSelect } from "./car-price-select/CarPriceSelect";
-import { InputLabel } from "../text/input-label/InputLabel";
-import { CarMileage } from "./mileage-input/MileageInput";
-import { Separator, SetMileageWrapper, Form } from "./FilterZone.styled";
-import { Button } from "../button/Button";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+
+import ReactSelect from "react-select";
+import { FilterWrapper, filterStyles } from "./FilterZone.styled";
+import { onValue, ref } from "firebase/database";
+import { DB } from "firabase";
+import { setSpecialists } from "redux/specialists/specialistsSlice";
+
+const options = [
+  { label: "A to Z", value: "A-to-Z" },
+  { label: "Z to A", value: "Z-to-A" },
+  { label: "Less than 10$", value: "less-10" },
+  { label: "Greater than 10$", value: "more-10" },
+  { label: "Popular", value: "popular" },
+  { label: "Not popular", value: "unpopular" },
+  { label: "Show all", value: "all" },
+];
 
 export const FilterZone = () => {
   const dispatch = useDispatch();
 
-  const filter = useSelector(selectFilter);
+  const [filter, setFilter] = useState("all");
 
-  const [make, setMake] = useState("");
-  const [price, setPrice] = useState(filter.price);
+  useEffect(() => {
+    switch (filter) {
+      case "A-to-Z":
+        break;
+      case "Z-to-A":
+        break;
+      case "less-10":
+        break;
+      case "more-10":
+        break;
+      case "popular":
+        break;
+      case "unpopular":
+        break;
 
-  const [mileageMin, setMileageMin] = useState(filter.mileage.min);
-  const [mileageMax, setMileageMax] = useState(filter.mileage.max);
+      default:
+        const dbRef = ref(DB);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+        onValue(dbRef, (snapshot) => {
+          const data = snapshot.val();
+          if (data) {
+            dispatch(setSpecialists(data));
+          }
+        });
 
-    if (make !== "") {
-      dispatch(getCars({ make }));
+        break;
     }
-    if (make === "") {
-      dispatch(getCars());
-    }
-    dispatch(setMakeFilter(make));
-    dispatch(setPriceFilter(price));
-
-    dispatch(setMileageFilterMin(mileageMin));
-    dispatch(setMileageFilterMax(mileageMax));
-  };
+  }, [filter, dispatch]);
 
   return (
     <section>
-      <Form onSubmit={handleSubmit}>
-        <InputLabel labelText={"Car brand"}>
-          <CarBrandSelect setMake={setMake} />
-        </InputLabel>
+      <FilterWrapper>Filters</FilterWrapper>
+      <ReactSelect
+        styles={filterStyles}
+        options={options}
+        menuShouldScrollIntoView={false}
+        blurInputOnSelect={true}
+        closeMenuOnSelect={true}
+        defaultValue={options[0]}
+        isSearchable={false}
+        isClearable={false}
+        name="filter"
+        onChange={(event) => {
+          if (!event) {
+            setFilter("all");
 
-        <InputLabel labelText={"Price/1hour"}>
-          <CarPriceSelect setPrice={setPrice} />
-        </InputLabel>
-        <InputLabel labelText="Car mileage/km">
-          <SetMileageWrapper>
-            <CarMileage
-              name="mileage-min"
-              setMileage={setMileageMin}
-              prefix="From"
-            />
-            <Separator> </Separator>
-            <CarMileage
-              name="mileage-max"
-              setMileage={setMileageMax}
-              prefix="To"
-            />
-          </SetMileageWrapper>
-        </InputLabel>
-        <Button type="submit">Search</Button>
-      </Form>
+            return;
+          }
+          setFilter(event.value);
+        }}
+      />
     </section>
   );
 };

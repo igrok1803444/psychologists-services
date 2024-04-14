@@ -5,7 +5,6 @@ import {
   HeroImg,
   HeroText,
   HeroWrapper,
-  HomeContainer,
   ImageWrapper,
   MainTitle,
   MainTitleWrapper,
@@ -15,10 +14,11 @@ import {
 import { ContactsLabel } from "components/contacts-label/ContactsLabel";
 import { QuestionLabel } from "components/question-label/QuestionLabel";
 import { SpecialistCount } from "components/specialist-count/SpecialistCount";
+import { Main } from "styles/Main";
 
 export const Home = () => {
   return (
-    <HomeContainer>
+    <Main>
       <div className="container">
         <HeroWrapper>
           <MainTitleWrapper>
@@ -49,6 +49,6 @@ export const Home = () => {
           </ImageWrapper>
         </HeroWrapper>
       </div>
-    </HomeContainer>
+    </Main>
   );
 };

@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
-import { carsReducer } from "./cars/carsSlice";
+import { specialistsReducer } from "./specialists/specialistsSlice";
 import { modalReduser } from "./modal/modalSlice";
-import { filterReducer } from "./filter/filterSlice";
+import { themeReducer } from "./theme/themeSlice";
 import { favoriteReducer } from "./favorite/favoriteSlice";
 import {
   FLUSH,
@@ -22,12 +22,17 @@ const favoritePersistConfig = {
   storage,
   whitelist: "items",
 };
+const themePersistConfig = {
+  key: "theme",
+  storage,
+  whitelist: "value",
+};
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  cars: carsReducer,
+  specialists: specialistsReducer,
   modal: modalReduser,
-  filter: filterReducer,
+  theme: persistReducer(themePersistConfig, themeReducer),
   favorite: persistReducer(favoritePersistConfig, favoriteReducer),
 });
 

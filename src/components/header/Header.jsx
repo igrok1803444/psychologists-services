@@ -29,8 +29,8 @@ export const Header = () => {
             </HeaderLogo>
             <Nav>
               <NavLink to="/">Home</NavLink>
-              <NavLink to="psychologists">Psychologists</NavLink>
-              {isLOggedIn && <NavLink to="favorite">Favorite</NavLink>}
+              <NavLink to="/psychologists">Psychologists</NavLink>
+              {isLOggedIn && <NavLink to="/favorite">Favorite</NavLink>}
             </Nav>
             {!isLOggedIn ? <UnloginMenu /> : <LoggedInMenu />}
           </HeaderWrapper>
