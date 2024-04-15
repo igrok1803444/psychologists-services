@@ -27,6 +27,7 @@ import { DesktopTimePicker } from "@mui/x-date-pickers";
 
 import { useState } from "react";
 import { theme } from "styles/themes";
+import { selecttheme } from "redux/theme/selectors";
 
 const schema = yup.object().shape({
   userName: yup.string().required("Required"),
@@ -44,8 +45,11 @@ const schema = yup.object().shape({
 export const RegisterConsultationForm = () => {
   const dispatch = useDispatch();
   const modalData = useSelector(selectModalData);
+  const themeName = useSelector(selecttheme);
 
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState("00:00");
+
+  
 
   const initalValues = {
     userName: "",
@@ -154,11 +158,11 @@ export const RegisterConsultationForm = () => {
                   },
                   ".MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: theme.colors.border.input,
+                      borderColor: theme[themeName].colors.border.input,
                     },
                   ".MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: theme.colors.border.input,
+                      borderColor: theme[themeName].colors.border.input,
                     },
                 }}
               />

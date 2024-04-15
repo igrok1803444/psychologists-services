@@ -26,7 +26,10 @@ export const LoggedInMenu = () => {
   return (
     <LoggedInMenuWrapper>
       <UserIconBG>
-        <img src="./images/user-icon.svg" alt="user-icon" />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/user-icon.svg`}
+          alt="user icon"
+        />
       </UserIconBG>
       <UserName>{user.name}</UserName>
       <Button type={"button"} onClick={handleLogOut}>

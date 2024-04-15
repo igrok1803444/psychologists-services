@@ -58,6 +58,7 @@ export const ListItem = ({ item }) => {
     dispatch(addToFavorite({ ...item, owner: user.id }));
     event.target.classList.add("favorite");
   };
+
   return (
     <LI>
       <div>
