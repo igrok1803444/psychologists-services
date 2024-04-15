@@ -41,7 +41,7 @@ export const Header = ({ modalStyles }) => {
             <HeaderLogo as={ReactRouteLink} to="/">
               <ActionText>psychologists.</ActionText>service
             </HeaderLogo>
-            {windowWidth > 768 && (
+            {windowWidth > 1024 && (
               <>
                 <Nav>
                   <NavLink to="/">Home</NavLink>
@@ -55,7 +55,7 @@ export const Header = ({ modalStyles }) => {
                 )}{" "}
               </>
             )}
-            {windowWidth <= 768 && (
+            {windowWidth <= 1024 && (
               <>
                 <BurgerMenu
                   onClick={() => {
