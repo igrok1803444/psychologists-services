@@ -39,8 +39,8 @@ export const Home = () => {
           </MainTitleWrapper>
           <ImageWrapper>
             <HeroImg
-              srcSet="/images/hero.png 1x, /images/hero@2x.png 2x"
-              src="photo.jpg"
+              srcSet="%PUBLIC_URL%/images/hero.png 1x, %PUBLIC_URL%/images/hero@2x.png 2x"
+              src="%PUBLIC_URL%/images/hero.png"
               alt="The girl is a psychologist with red hair."
             />
             <SpecialistCount />
