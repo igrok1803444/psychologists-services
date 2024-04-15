@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const FilterSection = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
 export const FilterWrapper = styled.p`
   margin-bottom: 8px;
 

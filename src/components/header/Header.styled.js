@@ -19,8 +19,10 @@ export const HeaderSection = styled.header`
 `;
 
 export const HeaderWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   margin: 0 auto;
 
@@ -80,4 +82,19 @@ export const NavLink = styled(ReactRouteLink)`
 
     transform: translateX(-50%);
   }
+`;
+
+export const BurgerMenu = styled.button`
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  outline: none;
+  background-color: inherit;
 `;

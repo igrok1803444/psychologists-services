@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import ReactSelect from "react-select";
-import { FilterWrapper } from "./FilterZone.styled";
+import { FilterSection, FilterWrapper } from "./FilterZone.styled";
 
 import { Changetheme } from "components/change-theme/ChangeTheme";
 import { theme } from "styles/themes";
@@ -108,29 +108,34 @@ export const FilterZone = () => {
   };
 
   return (
-    <section>
-      <FilterWrapper>Filters</FilterWrapper>
-      <ReactSelect
-        styles={filterStyles}
-        options={options}
-        menuShouldScrollIntoView={false}
-        blurInputOnSelect={true}
-        closeMenuOnSelect={true}
-        defaultValue={
-          options[options.findIndex((item) => item.value === "all")]
-        }
-        isSearchable={false}
-        isClearable={false}
-        name="filter"
-        thema={123}
-        onChange={(event) => {
-          if (!event) {
-            return;
+    <FilterSection>
+      <div>
+        <FilterWrapper>Filters</FilterWrapper>
+        <ReactSelect
+          styles={filterStyles}
+          options={options}
+          menuShouldScrollIntoView={false}
+          blurInputOnSelect={true}
+          closeMenuOnSelect={true}
+          defaultValue={
+            options[options.findIndex((item) => item.value === "all")]
           }
-          dispatch(setFilter(event.value));
-        }}
-      />
-      <Changetheme />
-    </section>
+          isSearchable={false}
+          isClearable={false}
+          name="filter"
+          thema={123}
+          onChange={(event) => {
+            if (!event) {
+              return;
+            }
+            dispatch(setFilter(event.value));
+          }}
+        />
+      </div>
+      <div>
+        <FilterWrapper>Theme</FilterWrapper>
+        <Changetheme />
+      </div>
+    </FilterSection>
   );
 };

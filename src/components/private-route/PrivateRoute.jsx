@@ -7,7 +7,6 @@ export const PrivateRoute = ({ component: Component }) => {
   const isLoading = useSelector(selectIsLoading);
 
   const haveAccess = isLoading === false && isLoggedIn === false;
-  console.log(isLoading === false && isLoggedIn === false);
 
   return haveAccess ? <Navigate to={"/"} /> : Component;
 };

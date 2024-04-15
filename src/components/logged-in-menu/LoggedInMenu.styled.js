@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const LoggedInMenuWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 1023px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 18px;
+  }
 `;
 
 export const UserIconBG = styled.div`
