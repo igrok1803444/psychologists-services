@@ -7,11 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "redux/modal/modalSlice";
 
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "firabase";
-import { setUser } from "redux/auth/authSlice";
+import { DB, auth } from "firabase";
+import { setIsLoading, setUser } from "redux/auth/authSlice";
 import { PrivateRoute } from "components/private-route/PrivateRoute";
 import { theme } from "styles/themes";
 import { selecttheme } from "redux/theme/selectors";
+import { setSpecialists } from "redux/specialists/specialistsSlice";
+import { setFilter } from "redux/filter/filterSlice";
+import { onValue, ref } from "firebase/database";
 
 const Catalog = lazy(() => import("./pages/catalog/Catalog"));
 const Favorite = lazy(() => import("./pages/favorite/Favorite"));
@@ -46,6 +49,19 @@ function App() {
   };
 
   useEffect(() => {
+    const dbRef = ref(DB);
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        dispatch(setSpecialists(data));
+      }
+    });
+    dispatch(setFilter("all"));
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setIsLoading(true));
     dispatch(closeModal());
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -53,6 +69,7 @@ function App() {
         dispatch(setUser({ displayName, accessToken, email, uid }));
         return user;
       }
+      dispatch(setIsLoading(false));
     });
   }, [dispatch]);
 

@@ -7,8 +7,7 @@ const authInitialState = {
     id: "",
   },
   isLoggedIn: false,
-  isLoading: false,
-  token: "",
+  isLoading: true,
 };
 
 const authSlice = createSlice({
@@ -16,19 +15,21 @@ const authSlice = createSlice({
   initialState: authInitialState,
   reducers: {
     setUser: (state, action) => {
+      state.isLoading = false;
       state.isLoggedIn = true;
       state.user.name = action.payload.displayName;
       state.user.email = action.payload.email;
       state.user.id = action.payload.uid;
-      state.token = action.payload.accessToken;
     },
     resetUser: (state) => {
       state.user = {};
       state.isLoggedIn = false;
-      state.token = "";
+    },
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
   },
 });
 
 export const authReducer = authSlice.reducer;
-export const { setUser, resetUser } = authSlice.actions;
+export const { setUser, resetUser, setIsLoading } = authSlice.actions;

@@ -1,9 +1,7 @@
-const checkFavorite = (specialist, favoriteList, userId) => {
-  const item = favoriteList.filter(
-    (item) => item.id === specialist.id && item.owner === userId
-  );
+const checkFavorite = (specialist, favoriteList) => {
+  const index = favoriteList.findIndex((item) => item.id === specialist.id);
 
-  if (item.length > 0) {
+  if (index !== -1) {
     return "favorite";
   }
   return;

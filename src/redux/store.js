@@ -16,6 +16,7 @@ import {
   persistStore,
 } from "redux-persist";
 import { authReducer } from "./auth/authSlice";
+import { filterReducer } from "./filter/filterSlice";
 
 const favoritePersistConfig = {
   key: "favorite",
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   modal: modalReduser,
   theme: persistReducer(themePersistConfig, themeReducer),
   favorite: persistReducer(favoritePersistConfig, favoriteReducer),
+  filter: filterReducer,
 });
 
 const store = configureStore({

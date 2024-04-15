@@ -26,17 +26,18 @@ import {
 } from "./ListItem.styled";
 
 import { Button } from "components/button/Button";
-import { selectFavoriteList } from "redux/favorite/selectors";
+import { selectUsersFavorites } from "redux/favorite/selectors";
 import { selectUser } from "redux/auth/selectors";
 import { ConditionsList } from "components/conditions-list/ConditionsList";
 import { useState } from "react";
 import { CommentsList } from "components/comments-list/CommentsList";
 import { Rating } from "components/rating/Rating";
+import { Notify } from "notiflix";
 
 export const ListItem = ({ item }) => {
   const dispatch = useDispatch();
   const { avatar_url, name, rating, price_per_hour, about, reviews } = item;
-  const favoriteList = useSelector(selectFavoriteList);
+  const favoriteList = useSelector(selectUsersFavorites);
   const user = useSelector(selectUser);
 
   const [showComments, setShowComments] = useState(false);
@@ -46,10 +47,15 @@ export const ListItem = ({ item }) => {
     dispatch(openModal(item));
   };
 
-  const isFavorite = checkFavorite(item, favoriteList, user.id);
+  const isFavorite = checkFavorite(item, favoriteList);
 
   const handleFavorite = (event) => {
     event.preventDefault();
+
+    if (user.id === "" || !user.id) {
+      Notify.failure("You must be login for use this function");
+      return;
+    }
 
     if (event.target.className.includes("favorite")) {
       dispatch(removeFromFavorite({ item, userId: user.id }));

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { selectUsersFavorites } from "redux/favorite/selectors";
+import { SelectOrdereFavorites } from "redux/favorite/selectors";
 import { selectModalIsOpen } from "redux/modal/selectors";
 import { closeModal } from "redux/modal/modalSlice";
 
@@ -13,6 +13,7 @@ import { FilterZone } from "components/filter-zone/FilterZone";
 import { SpecialistsList } from "components/specialists-list/SpecialistsList";
 import { LoadMore } from "components/load-more/LoadMore";
 import { Main } from "styles/Main";
+import { setFilter } from "redux/filter/filterSlice";
 
 const Favorite = ({ modalStyles }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Favorite = ({ modalStyles }) => {
 
   const [visibleSpecialists, setVisibleSpecialists] = useState([]);
 
-  const favoriteList = useSelector(selectUsersFavorites);
+  const favoriteList = useSelector(SelectOrdereFavorites);
   const modalIsOpen = useSelector(selectModalIsOpen);
 
   const handleModalClose = (event) => {
@@ -35,6 +36,7 @@ const Favorite = ({ modalStyles }) => {
 
   useEffect(() => {
     dispatch(closeModal());
+    dispatch(setFilter("all"));
   }, [dispatch]);
   return (
     <>

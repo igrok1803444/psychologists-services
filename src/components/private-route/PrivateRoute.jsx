@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectIsLoggedIn } from "redux/auth/selectors";
+import { selectIsLoading, selectIsLoggedIn } from "redux/auth/selectors";
 
 export const PrivateRoute = ({ component: Component }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoading = useSelector(selectIsLoading);
 
-  return isLoggedIn ? Component : <Navigate to={"/"} />;
+  const haveAccess = isLoading === false && isLoggedIn === false;
+  console.log(isLoading === false && isLoggedIn === false);
+
+  return haveAccess ? <Navigate to={"/"} /> : Component;
 };

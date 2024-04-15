@@ -2,22 +2,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FilterZone } from "components/filter-zone/FilterZone";
 import ReactModal from "react-modal";
-
 import { selectModalIsOpen } from "redux/modal/selectors";
 import { closeModal } from "redux/modal/modalSlice";
-
 import { Preview } from "./Catalog.styled";
 import { LoadMore } from "components/load-more/LoadMore";
-import { selectSpecialists } from "redux/specialists/selectors";
+import { selectOrderedSpecialists } from "redux/specialists/selectors";
 import { SpecialistsList } from "components/specialists-list/SpecialistsList";
 import { Main } from "styles/Main";
 import { RegisterConsultationForm } from "components/register-consultation-form/RegisterConsultationForm";
 import { NoResultText } from "components/no-result- text/NoResultText";
 
+import { setFilter } from "redux/filter/filterSlice";
+
 const Catalog = ({ modalStyles }) => {
   const dispatch = useDispatch();
 
-  const specialists = useSelector(selectSpecialists);
+  const specialists = useSelector(selectOrderedSpecialists);
   const modalIsOpen = useSelector(selectModalIsOpen);
 
   const [number, setNumber] = useState(3);
@@ -35,6 +35,7 @@ const Catalog = ({ modalStyles }) => {
 
   useEffect(() => {
     dispatch(closeModal());
+    dispatch(setFilter("all"));
   }, [dispatch]);
   return (
     <>
