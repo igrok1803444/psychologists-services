@@ -1,6 +1,6 @@
-import { ModalCloseIcon } from "components/modal/modal-info/ModalInfo.styled";
+import { ModalCloseIcon } from "styles/ModalInfo.styled";
 import * as yup from "yup";
-// import { FiEye, FiEyeOff } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Notify } from "notiflix";
 
 import {
@@ -12,6 +12,7 @@ import {
   PasswordInputWrapper,
   AuthSubmitButtonText,
   ErrorMessage,
+  ChangePasswordVisibilityButton,
 } from "./AuthForm.styled";
 import { Button } from "components/button/Button";
 import { Formik } from "formik";
@@ -19,6 +20,7 @@ import { Formik } from "formik";
 import { loginFunc, registerfunc } from "features";
 import { useDispatch } from "react-redux";
 import { setUser } from "redux/auth/authSlice";
+import { useState } from "react";
 
 const registeSchema = yup.object().shape({
   userName: yup.string().required("Required"),
@@ -45,6 +47,8 @@ const initiaRegisterValues = {
 };
 export const AuthForm = ({ option, handleModalClose }) => {
   const dispatch = useDispatch();
+
+  const [passwordVisibly, setPasswordVisibly] = useState(false);
 
   let initialValues = {};
   let schema = {};
@@ -90,7 +94,7 @@ export const AuthForm = ({ option, handleModalClose }) => {
     <>
       <ModalCloseIcon onClick={handleModalClose} />
 
-      <AuthFormWrapper style={{ maxHeight: "580px" }}>
+      <AuthFormWrapper style={{ maxHeight: "580px", maxWidth: "565px" }}>
         <AuthFormHeading>
           {option === "login" && "Log In"}
           {option === "register" && "Registration"}
@@ -129,10 +133,19 @@ export const AuthForm = ({ option, handleModalClose }) => {
 
               <AuthFormInput
                 id="userPassword"
-                type="password"
+                type={passwordVisibly ? "text" : "password"}
                 placeholder="Password"
                 name="userPassword"
               />
+              <ChangePasswordVisibilityButton
+                type="button"
+                onClick={() => {
+                  setPasswordVisibly((prevState) => !prevState);
+                }}
+              >
+                {" "}
+                {passwordVisibly ? <FiEye /> : <FiEyeOff />}
+              </ChangePasswordVisibilityButton>
             </PasswordInputWrapper>
 
             <Button type="submit" className="action">

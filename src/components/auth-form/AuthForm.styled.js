@@ -8,6 +8,9 @@ export const AuthFormWrapper = styled.div`
 
   width: 100%;
   height: 100%;
+
+  max-width: 565px;
+  max-height: 580px;
 `;
 
 export const AuthFormHeading = styled.h2`
@@ -76,4 +79,24 @@ export const ErrorMessage = styled(ErrorFormik)`
   color: red;
 
   font-size: 12px;
+`;
+
+export const ChangePasswordVisibilityButton = styled.button`
+  cursor: pointer;
+
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  width: fit-content;
+  height: fit-content;
+
+  background: none;
+  border: none;
+
+  :hover,
+  :focus {
+    background: none;
+    border: none;
+  }
 `;

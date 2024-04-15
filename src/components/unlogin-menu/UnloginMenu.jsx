@@ -5,10 +5,9 @@ import { AuthButtonText, UnLoginMenu } from "./UnloginMenu.styled";
 
 import { useState } from "react";
 
-import { ModalStyles } from "components/modal/Modal.styled";
 import { AuthForm } from "components/auth-form/AuthForm";
 
-export const UnloginMenu = () => {
+export const UnloginMenu = ({ modalStyles }) => {
   const [openForm, setOpenForm] = useState("");
   const [openAuthModal, setOpenAuthModal] = useState(false);
 
@@ -46,7 +45,7 @@ export const UnloginMenu = () => {
       <ReactModal
         isOpen={openAuthModal}
         onRequestClose={handleModalClose}
-        style={ModalStyles}
+        style={modalStyles}
         appElement={document.body}
       >
         <AuthForm option={openForm} handleModalClose={handleModalClose} />

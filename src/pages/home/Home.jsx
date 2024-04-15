@@ -39,7 +39,7 @@ export const Home = () => {
           </MainTitleWrapper>
           <ImageWrapper>
             <HeroImg
-              srcset="./images/hero.png 1x, ./images/hero@2x.png 2x"
+              srcSet="/images/hero.png 1x, /images/hero@2x.png 2x"
               src="photo.jpg"
               alt="The girl is a psychologist with red hair."
             />

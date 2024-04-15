@@ -11,6 +11,12 @@ export const LI = styled.li`
 
   padding: 24px;
 
+  margin-bottom: 32px;
+
+  background-color: ${({ theme }) => theme.colors.background.specialistLI};
+
+  border-radius: 24px;
+
   @media screen and (max-width: 475px) {
     justify-content: center;
     flex-wrap: wrap;

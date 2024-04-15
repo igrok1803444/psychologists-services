@@ -4,6 +4,8 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #f3f3f3;
 }
 body.ReactModal__Body--open {
   overflow: hidden;

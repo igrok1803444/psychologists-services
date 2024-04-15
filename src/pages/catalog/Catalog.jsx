@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { FilterZone } from "components/filter-zone/FilterZone";
-import { ModalStyles } from "components/modal/Modal.styled";
-import { ModalInfo } from "components/modal/modal-info/ModalInfo";
 import ReactModal from "react-modal";
 
 import { selectModalIsOpen } from "redux/modal/selectors";
 import { closeModal } from "redux/modal/modalSlice";
 
 import { Preview } from "./Catalog.styled";
-// import { NoResultText } from "components/no-result- text/NoResultText";
 import { LoadMore } from "components/load-more/LoadMore";
 import { selectSpecialists } from "redux/specialists/selectors";
 import { SpecialistsList } from "components/specialists-list/SpecialistsList";
 import { Main } from "styles/Main";
+import { RegisterConsultationForm } from "components/register-consultation-form/RegisterConsultationForm";
+import { NoResultText } from "components/no-result- text/NoResultText";
 
-const Catalog = () => {
+const Catalog = ({ modalStyles }) => {
   const dispatch = useDispatch();
 
   const specialists = useSelector(selectSpecialists);
@@ -45,12 +44,15 @@ const Catalog = () => {
             <FilterZone></FilterZone>
 
             <SpecialistsList specialists={visibleSpecialists} />
+            {visibleSpecialists.length === 0 && <NoResultText />}
 
-            <LoadMore
-              onClick={() => {
-                setNumber((prevNumber) => prevNumber + 3);
-              }}
-            />
+            {visibleSpecialists.length < specialists.length && (
+              <LoadMore
+                onClick={() => {
+                  setNumber((prevNumber) => prevNumber + 3);
+                }}
+              />
+            )}
           </Preview>
         </div>
       </Main>
@@ -59,9 +61,9 @@ const Catalog = () => {
         isOpen={modalIsOpen}
         onRequestClose={handleModalClose}
         appElement={document.body}
-        style={ModalStyles}
+        style={modalStyles}
       >
-        <ModalInfo></ModalInfo>
+        <RegisterConsultationForm />
       </ReactModal>
     </>
   );

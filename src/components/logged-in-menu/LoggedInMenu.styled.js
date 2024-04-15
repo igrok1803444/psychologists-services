@@ -35,5 +35,4 @@ export const LogOutButtonText = styled.p`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  color: ${({ theme }) => theme.colors.text.button};
 `;

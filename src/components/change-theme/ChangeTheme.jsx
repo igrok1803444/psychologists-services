@@ -1,30 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
 import ReactSelect from "react-select";
-import { FilterWrapper } from "./FilterZone.styled";
-import { onValue, ref } from "firebase/database";
-import { DB } from "firabase";
-import { setSpecialists } from "redux/specialists/specialistsSlice";
-import { Changetheme } from "components/change-theme/ChangeTheme";
-import { theme } from "styles/themes";
 import { selecttheme } from "redux/theme/selectors";
+import { setTheme } from "redux/theme/themeSlice";
+import { theme } from "styles/themes";
 
-const options = [
-  { label: "A to Z", value: "A-to-Z" },
-  { label: "Z to A", value: "Z-to-A" },
-  { label: "Less than 10$", value: "less-10" },
-  { label: "Greater than 10$", value: "more-10" },
-  { label: "Popular", value: "popular" },
-  { label: "Not popular", value: "unpopular" },
-  { label: "Show all", value: "all" },
+const values = [
+  {
+    value: "green",
+    label: "Green",
+  },
+  {
+    value: "blue",
+    label: "Blue",
+  },
+  {
+    value: "yellow",
+    label: "Yellow",
+  },
 ];
-
-export const FilterZone = () => {
+export const Changetheme = () => {
   const dispatch = useDispatch();
   const themeName = useSelector(selecttheme);
-
-  const [filter, setFilter] = useState("all");
 
   const filterStyles = {
     container: (baseStyles, state) => ({
@@ -111,59 +107,27 @@ export const FilterZone = () => {
     }),
   };
 
-  useEffect(() => {
-    switch (filter) {
-      case "A-to-Z":
-        break;
-      case "Z-to-A":
-        break;
-      case "less-10":
-        break;
-      case "more-10":
-        break;
-      case "popular":
-        break;
-      case "unpopular":
-        break;
-
-      default:
-        const dbRef = ref(DB);
-
-        onValue(dbRef, (snapshot) => {
-          const data = snapshot.val();
-          if (data) {
-            dispatch(setSpecialists(data));
-          }
-        });
-
-        break;
-    }
-  }, [filter, dispatch]);
-
   return (
-    <section>
-      <FilterWrapper>Filters</FilterWrapper>
+    <>
       <ReactSelect
         styles={filterStyles}
-        options={options}
+        options={values}
         menuShouldScrollIntoView={false}
         blurInputOnSelect={true}
         closeMenuOnSelect={true}
-        defaultValue={options[0]}
+        defaultValue={
+          values[values.findIndex((value) => value.value === themeName)]
+        }
         isSearchable={false}
         isClearable={false}
-        name="filter"
-        thema={123}
         onChange={(event) => {
-          if (!event) {
-            setFilter("all");
+          if (event) {
+            dispatch(setTheme(event.value));
 
             return;
           }
-          setFilter(event.value);
         }}
       />
-      <Changetheme />
-    </section>
+    </>
   );
 };

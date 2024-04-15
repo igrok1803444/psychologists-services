@@ -16,7 +16,7 @@ import { UnloginMenu } from "../unlogin-menu/UnloginMenu";
 import { selectIsLoggedIn } from "redux/auth/selectors";
 import { LoggedInMenu } from "components/logged-in-menu/LoggedInMenu";
 
-export const Header = () => {
+export const Header = ({ modalStyles }) => {
   const isLOggedIn = useSelector(selectIsLoggedIn);
 
   return (
@@ -32,7 +32,11 @@ export const Header = () => {
               <NavLink to="/psychologists">Psychologists</NavLink>
               {isLOggedIn && <NavLink to="/favorite">Favorite</NavLink>}
             </Nav>
-            {!isLOggedIn ? <UnloginMenu /> : <LoggedInMenu />}
+            {!isLOggedIn ? (
+              <UnloginMenu modalStyles={modalStyles} />
+            ) : (
+              <LoggedInMenu />
+            )}
           </HeaderWrapper>
         </div>
       </HeaderSection>

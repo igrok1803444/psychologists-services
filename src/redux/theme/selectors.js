@@ -1,1 +1,1 @@
-export const selecttheme = (state) => state.filter.value;
+export const selecttheme = (state) => state.theme.value;

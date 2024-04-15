@@ -38,7 +38,7 @@ export const CommentatorName = styled.h2`
   color: ${({ theme }) => theme.colors.text.subHeadings};
 `;
 
-export const RatingRext = styled.p`
+export const RatingRext = styled.span`
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;

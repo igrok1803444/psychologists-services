@@ -4,11 +4,12 @@ const themeInitialState = {
   value: "green",
 };
 const themeSlice = createSlice({
-  name: "filter",
+  name: "theme",
   initialState: themeInitialState,
   reducers: {
     setTheme: (state, action) => {
       state.value = action.payload;
+      console.log(1);
     },
   },
 });

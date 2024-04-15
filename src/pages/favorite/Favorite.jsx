@@ -8,22 +8,19 @@ import { closeModal } from "redux/modal/modalSlice";
 import { NoResultText } from "components/no-result- text/NoResultText";
 
 import ReactModal from "react-modal";
-import { ModalStyles } from "components/modal/Modal.styled";
-import { ModalInfo } from "components/modal/modal-info/ModalInfo";
 import { Preview } from "pages/catalog/Catalog.styled";
 import { FilterZone } from "components/filter-zone/FilterZone";
 import { SpecialistsList } from "components/specialists-list/SpecialistsList";
 import { LoadMore } from "components/load-more/LoadMore";
 import { Main } from "styles/Main";
 
-const Favorite = () => {
+const Favorite = ({ modalStyles }) => {
   const dispatch = useDispatch();
 
   const [number, setNumber] = useState(3);
 
   const [visibleSpecialists, setVisibleSpecialists] = useState([]);
 
-  const isLoading = false;
   const favoriteList = useSelector(selectUsersFavorites);
   const modalIsOpen = useSelector(selectModalIsOpen);
 
@@ -43,18 +40,18 @@ const Favorite = () => {
     <>
       <Main>
         <div className="container">
-          {!isLoading && favoriteList.length === 0 && <NoResultText />}
-
           <Preview>
             <FilterZone></FilterZone>
 
             <SpecialistsList specialists={visibleSpecialists} />
-
-            <LoadMore
-              onClick={() => {
-                setNumber((prevNumber) => prevNumber + 3);
-              }}
-            />
+            {favoriteList.length === 0 && <NoResultText />}
+            {visibleSpecialists.length < favoriteList && (
+              <LoadMore
+                onClick={() => {
+                  setNumber((prevNumber) => prevNumber + 3);
+                }}
+              />
+            )}
           </Preview>
         </div>
       </Main>
@@ -62,10 +59,8 @@ const Favorite = () => {
         isOpen={modalIsOpen}
         onRequestClose={handleModalClose}
         appElement={document.body}
-        style={ModalStyles}
-      >
-        <ModalInfo></ModalInfo>
-      </ReactModal>
+        style={modalStyles}
+      ></ReactModal>
     </>
   );
 };
