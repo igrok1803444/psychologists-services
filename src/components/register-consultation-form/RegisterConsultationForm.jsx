@@ -15,7 +15,7 @@ import {
   PsychologistNameWrapper,
   RegisterConsultationWrapper,
 } from "./RegisterConsultationForm.styled";
-import "react-clock/dist/Clock.css";
+
 import { ModalCloseIcon } from "styles/ModalInfo.styled";
 import { Img } from "styles/Img";
 
