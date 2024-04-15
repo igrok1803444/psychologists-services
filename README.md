@@ -1,20 +1,20 @@
-# Car Rent Service
+# Psychologists Service
 
-Це веб-додаток для прокату автомобілів, розроблений з використанням React та інших технологій.
+This is a web application for finding a psychologist specialist, developed using React and other technologies.
 
-## Опис
+## Description
 
-Цей проект створено для надання можливості користувачам орендувати автомобілі через інтернет. Він містить функції перегляду автомобілів, пошук автомоболя за ціною оренди, пробігом і маркою.
+This application will assist the user in selecting a specialist, as it contains profiles of only experienced professionals. The user can also sort all specialists by name or popularity. Additionally, there is a list of favorite specialists (available only for registered users).
 
-## Встановлення
+## Instalation
 
-1. Клонуйте цей репозиторій: git clone https://github.com/igrok1803444/car-rent-service.git
-2. Перейдіть до каталогу проекту: cd car-rent-service
-3. Встановіть залежності: npm install
-4. Запустіть додаток: npm start
-5. Відкрийте ваш браузер та перейдіть за адресою http://localhost:3000.
+1. Clone repo: git clone https://github.com/igrok1803444/car-rent-service.git
+2. Change directory to : cd car-rent-service
+3. Install dependencies : npm install
+4. Start application: npm start
+5. Open your browser and go to the address http://localhost:3000.
 
-## Використані технології/бібліотеки
+## The technologies/libraries used
 
 - React
 - HTML
@@ -22,10 +22,6 @@
 - Redux
 - Styled Components
 - React modal
-- Axios
-
-## Скріншоти
-
-- ![alt text](image.png)
-- ![alt text](image-1.png)
-- ![alt text](image-2.png)
+- React Select
+- Formik & Yup
+- FireBase
