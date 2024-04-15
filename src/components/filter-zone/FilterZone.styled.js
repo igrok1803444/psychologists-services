@@ -4,6 +4,7 @@ export const FilterSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const FilterWrapper = styled.p`
